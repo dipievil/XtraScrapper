@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<datafile>
+  <header>
+    <name>Exemplo de Console</name>
+    <description>Uma lista de jogos para teste.</description>
+    <version>1.0</version>
+  </header>
+  <game name="Jogo de Aventura (USA)">
+    <description>Jogo de Aventura (USA)</description>
+    <rom name="jogo_aventura_usa.rom" size="131072" crc="e123a868" />
+  </game>
+  <game name="Super Plataforma 2 (Europe)">
+    <description>Super Plataforma 2 (Europe)</description>
+    <rom name="plataforma2_eur.rom" size="262144" crc="a892b459" />
+  </game>
+  <game name="Corrida Espacial (Japan)">
+    <description>Corrida Espacial (Japan)</description>
+    <rom name="corrida_jp.rom" size="65536" crc="3345cdef" />
+  </game>
+</datafile>

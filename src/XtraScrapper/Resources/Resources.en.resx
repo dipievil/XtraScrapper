@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="StartingMessage" xml:space="preserve">
+    <value>🚀 Starting XtraScrapper...</value>
+  </data>
+  <data name="ErrorDatNotFound" xml:space="preserve">
+    <value>❌ Error: The DAT file '{0}' was not found!</value>
+  </data>
+  <data name="LoadingDat" xml:space="preserve">
+    <value>📂 Loading DAT file: {0}...</value>
+  </data>
+  <data name="GamesLoaded" xml:space="preserve">
+    <value>🎮 {0} games were loaded from the DAT file.</value>
+  </data>
+  <data name="SearchingRoms" xml:space="preserve">
+    <value>🔍 Searching for ROMs to process...</value>
+  </data>
+  <data name="ErrorRomsFolderNotFound" xml:space="preserve">
+    <value>❌ Error: The folder '{0}' was not found!</value>
+  </data>
+  <data name="FilesFound" xml:space="preserve">
+    <value>📁 Found {0} files in the folder '{1}'.</value>
+  </data>
+  <data name="SuccessRenamed" xml:space="preserve">
+    <value>✅ [SUCCESS] '{0}' renamed to '{1}'</value>
+  </data>
+  <data name="AlreadyCorrect" xml:space="preserve">
+    <value>ℹ️ [ALREADY CORRECT] '{0}' already has the correct name</value>
+  </data>
+  <data name="InfoNotFound" xml:space="preserve">
+    <value>ℹ️ [INFO] file '{0}' (CRC: {1}) not found in DAT.</value>
+  </data>
+  <data name="ProcessingComplete" xml:space="preserve">
+    <value>🏁 ROM processing completed!</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>📊 Report: {0} of {1} files were renamed.</value>
+  </data>
+</root>

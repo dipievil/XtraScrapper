@@ -35,6 +35,10 @@ msbuild.wrn
 !XtraScrapper-v*.zip.sha256
 !RELEASE-NOTES-v*.md
 
+# XtraImageScrapper cache and logs
+*.db
+*.log
+
 # Visual Studio 2015
 .vs/
 

@@ -95,6 +95,6 @@
     <value>Directory not found: {0}</value>
   </data>
   <data name="InvalidArguments" xml:space="preserve">
-    <value>Invalid arguments. Use: XtraRCleaner --output &lt;path&gt; [--backup] [--purge]</value>
+    <value>Invalid arguments. Use: XtraRCleaner --input &lt;roms_folder&gt; --output &lt;destination_folder&gt; [--backup] [--purge]</value>
   </data>
 </root>

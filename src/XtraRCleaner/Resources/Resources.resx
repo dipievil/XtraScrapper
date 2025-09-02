@@ -95,6 +95,6 @@
     <value>Diretório não encontrado: {0}</value>
   </data>
   <data name="InvalidArguments" xml:space="preserve">
-    <value>Argumentos inválidos. Use: XtraRCleaner --output &lt;caminho&gt; [--backup] [--purge]</value>
+    <value>Argumentos inválidos. Use: XtraRCleaner --input &lt;pasta_roms&gt; --output &lt;pasta_destino&gt; [--backup] [--purge]</value>
   </data>
 </root>

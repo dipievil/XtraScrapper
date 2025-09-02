@@ -8,6 +8,7 @@ namespace XtraRCleaner.Services;
 public interface IRomProcessor
 {
     Task<(int processed, int unique, int duplicates)> ProcessRomsAsync(
+        string inputPath,
         string outputPath, 
         ProcessMode mode, 
         Dictionary<string, RomEntry> datRoms,
@@ -27,13 +28,12 @@ public class RomProcessor : IRomProcessor
     }
 
     public async Task<(int processed, int unique, int duplicates)> ProcessRomsAsync(
+        string inputPath,
         string outputPath, 
         ProcessMode mode, 
         Dictionary<string, RomEntry> datRoms,
         IProgress<string>? progress = null)
     {
-        var settings = GetSettings();
-        var oldPath = Path.GetFullPath(settings.OldRomsPath);
         var newPath = Path.Combine(outputPath, "new");
         var checkedPath = Path.Combine(outputPath, "checked");
         
@@ -41,13 +41,13 @@ public class RomProcessor : IRomProcessor
         Directory.CreateDirectory(newPath);
         Directory.CreateDirectory(checkedPath);
 
-        if (!Directory.Exists(oldPath))
+        if (!Directory.Exists(inputPath))
         {
-            _logger.LogError("Directory not found: {Path}", oldPath);
+            _logger.LogError("Directory not found: {Path}", inputPath);
             return (0, 0, 0);
         }
 
-        var files = Directory.GetFiles(oldPath, "*.*", SearchOption.AllDirectories)
+        var files = Directory.GetFiles(inputPath, "*.*", SearchOption.AllDirectories)
             .Where(f => IsRomFile(f))
             .ToArray();
 
@@ -210,10 +210,5 @@ public class RomProcessor : IRomProcessor
         };
         
         _logger.LogInformation("{FileName} >> {Status}", fileName, status);
-    }
-
-    private static Models.Settings GetSettings()
-    {
-        return new Models.Settings();
     }
 }

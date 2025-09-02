@@ -37,7 +37,6 @@ XtraImageScrapper.exe --user "meuuser" --password "minhasenha"
 - `--boxfolder <caminho>` - Pasta para imagens de caixa/box
 - `--printfolder <caminho>` - Pasta para screenshots/prints
 - `--thumbfolder <caminho>` - Pasta para thumbnails
-- `--videofolder <caminho>` - Pasta para vídeos
 - `--folderconfig <arquivo>` - Arquivo JSON com configuração completa de pastas
 
 ### ScreenScraper.fr
@@ -93,7 +92,6 @@ Crie um arquivo JSON para personalizar onde salvar cada tipo de imagem:
   "boxFolder": "./roms/{SYSTEM}/images/box",
   "printFolder": "./roms/{SYSTEM}/images/screenshots", 
   "mainImagesFolder": "./roms/{SYSTEM}/images/main",
-  "videoFolder": "./roms/{SYSTEM}/videos",
   "thumbFolder": "./roms/{SYSTEM}/images/thumbs"
 }
 ```

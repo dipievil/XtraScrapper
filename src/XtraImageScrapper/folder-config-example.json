@@ -21,11 +21,6 @@
       "description": "The subfolder for main images. Ex: ./roms/{SYSTEM}/images/main",
       "default": "./roms/{SYSTEM}/images"
     },
-    "videoFolder": {
-      "type": "string",
-      "description": "The subfolder for videos. Ex: ./roms/{SYSTEM}/video",
-      "default": "./roms/{SYSTEM}/video"
-    },
     "thumbFolder": {
       "type": "string",
       "description": "The subfolder for thumbnails. Ex: ./roms/{SYSTEM}/images/thumb",

@@ -175,9 +175,6 @@ public class XtraImageScrapperApp
                 case "--thumbfolder" when i + 1 < args.Length:
                     cmdArgs.ThumbFolder = args[++i];
                     break;
-                case "--videofolder" when i + 1 < args.Length:
-                    cmdArgs.VideoFolder = args[++i];
-                    break;
                 case "--folderconfig" when i + 1 < args.Length:
                     cmdArgs.FolderConfig = args[++i];
                     break;
@@ -237,8 +234,6 @@ public class XtraImageScrapperApp
             folderConfig.PrintFolder = cmdArgs.PrintFolder;
         if (!string.IsNullOrEmpty(cmdArgs.ThumbFolder))
             folderConfig.ThumbFolder = cmdArgs.ThumbFolder;
-        if (!string.IsNullOrEmpty(cmdArgs.VideoFolder))
-            folderConfig.VideoFolder = cmdArgs.VideoFolder;
 
         return folderConfig;
     }
@@ -256,7 +251,6 @@ public class XtraImageScrapperApp
         Console.WriteLine("  --boxfolder <path>     Folder for box images");
         Console.WriteLine("  --printfolder <path>   Folder for screenshot images");
         Console.WriteLine("  --thumbfolder <path>   Folder for thumbnail images");
-        Console.WriteLine("  --videofolder <path>   Folder for videos");
         Console.WriteLine("");
         Console.WriteLine("  --folderconfig <path>  JSON file with folder configuration");
         Console.WriteLine("                         Overrides individual folder parameters");

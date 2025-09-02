@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "properties": {
+    "imageFolder": {
+      "type": "string",
+      "description": "The main folder for images",
+      "default": "./roms/{SYSTEM}/images"
+    },
+    "boxFolder": {
+      "type": "string",
+      "description": "The subfolder for box image. Ex: ./roms/{SYSTEM}/images/box",
+      "default": "./roms/{SYSTEM}/images"
+    },
+    "printFolder": {
+      "type": "string",
+      "description": "The subfolder for print image. Ex: ./roms/{SYSTEM}/images/print",
+      "default": "./roms/{SYSTEM}/images"
+    },
+    "mainImagesFolder": {
+      "type": "string",
+      "description": "The subfolder for main images. Ex: ./roms/{SYSTEM}/images/main",
+      "default": "./roms/{SYSTEM}/images"
+    },
+    "thumbFolder": {
+      "type": "string",
+      "description": "The subfolder for thumbnails. Ex: ./roms/{SYSTEM}/images/thumb",
+      "default": "./roms/{SYSTEM}/images"
+    }
+  },
+  "required": [
+    "imageFolder"
+  ]
+}

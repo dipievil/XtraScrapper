@@ -19,10 +19,27 @@ XtraScrapper é seu companheiro perfeito para organizar aquela coleção de ROMs
 Como um verdadeiro power-up dos anos 80, ele usa arquivos DAT pra renomear e organizar seus jogos 
 com precisão de pixel-perfect! 
 
-### ⚡ Power-Ups (Features):
+## 🎮 Aplicativos da Suite
+
+A XtraScrapper Suite inclui várias ferramentas especializadas:
+
+### 📦 XtraScrapper (Organizador Principal)
 - 🎯 **Organização Automática** - Renomeia ROMs baseado em arquivos DAT
 - 🔍 **Verificação CRC32** - Garante que seus jogos são legítimos  
-- 📁 **Pastas por Sistema** - Cria subpastas organizadas (Mega Drive, Master System, etc.)
+- 📁 **Pastas por Sistema** - Cria subpastas organizadas
+
+### 🖼️ XtraImageScrapper (Novo!)
+- 🌐 **Download Automático** - Baixa imagens do ScreenScraper.fr
+- 📷 **Múltiplos Tipos** - Box, screenshots, thumbnails, etc.
+- 💾 **Cache Inteligente** - SQLite para evitar re-downloads
+- ⚙️ **Configuração Flexível** - Estrutura de pastas personalizável
+
+### 🧹 XtraRCleaner (Limpador)
+- 🗑️ **Remove Duplicatas** - Baseado em CRC32
+- 📊 **Validação DAT** - Mantém apenas ROMs conhecidos
+- 🔄 **Modos Flexíveis** - Move, copia ou deleta
+
+### ⚡ Features Comuns:
 - 🌍 **Multi-idioma** - Suporte PT-BR e EN
 - 💾 **Executável Único** - Sem dependências, só baixar e usar!
 - ⚙️ **Configurável** - Via linha de comando ou arquivo de config
@@ -182,13 +199,29 @@ Abra o arquivo pra ver o que rolou com cada ROM! 🕵️
 # 2. Organize os ROMs
 XtraScrapper.exe --folder "C:\ROMs\MegaDrive" --dat "mega-drive.dat" --move-sys
 
-# 3. Confira o log gerado
-# 4. Profit! 🎉
+# 3. Baixe as imagens dos jogos
+XtraImageScrapper.exe --folder "C:\ROMs\MegaDrive" --user "meuuser" --password "minhasenha"
+
+# 4. Confira os logs gerados
+# 5. Profit! 🎉
 ```
+
+## 📚 Documentação Detalhada
+
+- 📖 [XtraScrapper (Organizador)](docs/XtraScrapper.md)
+- 🖼️ [XtraImageScrapper (Download de Imagens)](docs/XtraImageScrapper.md)  
+- 🧹 [XtraRCleaner (Limpador)](docs/XtraRCleaner.md)
 
 ---
 
 ## 🏆 High Score (Changelog)
+
+### 🆕 v0.1.0 - "Image Power-Up!" (Jan 2025)
+- 🖼️ **XtraImageScrapper**: Novo app para download de imagens
+- 🌐 Integração com ScreenScraper.fr API
+- 💾 Cache SQLite para performance
+- ⚙️ Configuração flexível de pastas via JSON
+- 📷 Suporte a múltiplos tipos de imagem (box, screenshot, etc.)
 
 ### 🌟 v0.0.1 - "First Level Complete!" (Sept 2024)
 - 🚀 Release inicial com funcionalidades core

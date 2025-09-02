@@ -1,0 +1,9 @@
+# Example URLs for XtraImageScrapper testing
+# Remove the # at the beginning of each line to use these URLs
+
+# https://picsum.photos/800/600
+# https://picsum.photos/1024/768
+# https://picsum.photos/640/480
+# https://httpbin.org/image/png
+# https://httpbin.org/image/jpeg
+# https://httpbin.org/image/webp

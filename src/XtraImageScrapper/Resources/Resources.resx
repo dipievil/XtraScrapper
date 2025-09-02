@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AppName" xml:space="preserve">
+    <value>XtraImageScrapper</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Scrapper de imagens - Baixa imagens de URLs ou sites</value>
+  </data>
+  <data name="Help_Usage" xml:space="preserve">
+    <value>Uso: XtraImageScrapper.exe [opções]</value>
+  </data>
+  <data name="Help_Options" xml:space="preserve">
+    <value>Opções:</value>
+  </data>
+  <data name="Help_Url" xml:space="preserve">
+    <value>  --url &lt;url&gt;        URL ou arquivo contendo URLs para baixar</value>
+  </data>
+  <data name="Help_Output" xml:space="preserve">
+    <value>  --output &lt;pasta&gt;   Pasta de destino (padrão: appsettings.json)</value>
+  </data>
+  <data name="Help_Concurrent" xml:space="preserve">
+    <value>  --concurrent &lt;n&gt;  Número de downloads simultâneos (padrão: 5)</value>
+  </data>
+  <data name="Help_Help" xml:space="preserve">
+    <value>  --help, -h, /?     Mostra esta mensagem de ajuda</value>
+  </data>
+  <data name="Help_Examples" xml:space="preserve">
+    <value>Exemplos:</value>
+  </data>
+  <data name="Help_Example1" xml:space="preserve">
+    <value>  XtraImageScrapper.exe --url "https://example.com/image.jpg"</value>
+  </data>
+  <data name="Help_Example2" xml:space="preserve">
+    <value>  XtraImageScrapper.exe --url "urls.txt" --output "C:\\Imagens"</value>
+  </data>
+  <data name="Error_InvalidUrl" xml:space="preserve">
+    <value>❌ URL inválida: {0}</value>
+  </data>
+  <data name="Error_CreateDirectory" xml:space="preserve">
+    <value>❌ Erro ao criar pasta '{0}': {1}</value>
+  </data>
+  <data name="Error_Download" xml:space="preserve">
+    <value>❌ Erro ao baixar '{0}': {1}</value>
+  </data>
+  <data name="Success_Download" xml:space="preserve">
+    <value>✅ Baixado: {0}</value>
+  </data>
+  <data name="Info_Starting" xml:space="preserve">
+    <value>🚀 Iniciando XtraImageScrapper...</value>
+  </data>
+  <data name="Info_Completed" xml:space="preserve">
+    <value>🎉 Processo concluído! Total: {0} imagens baixadas</value>
+  </data>
+  <data name="Info_Processing" xml:space="preserve">
+    <value>📥 Processando: {0}</value>
+  </data>
+  <data name="Warn_FileExists" xml:space="preserve">
+    <value>⚠️ Arquivo já existe: {0}</value>
+  </data>
+  <data name="Warn_InvalidExtension" xml:space="preserve">
+    <value>⚠️ Extensão não permitida: {0}</value>
+  </data>
+  <data name="Warn_FileTooLarge" xml:space="preserve">
+    <value>⚠️ Arquivo muito grande: {0} ({1} MB)</value>
+  </data>
+</root>

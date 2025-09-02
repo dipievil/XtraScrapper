@@ -9,23 +9,32 @@
  ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝     ╚══════╝╚═╝  ╚═╝
 ```
 
-**O organizador de ROMs definitivo para colecionadores retro! 🕹️**
+**A suíte definitiva de ferramentas para colecionadores retro! 🕹️**
 
 ---
 
-## 🌟 Sobre o Jogo... quer dizer, App!
+## 🌟 Sobre a Suíte
 
-XtraScrapper é seu companheiro perfeito para organizar aquela coleção de ROMs que tá uma bagunça! 
-Como um verdadeiro power-up dos anos 80, ele usa arquivos DAT pra renomear e organizar seus jogos 
-com precisão de pixel-perfect! 
+XtraScrapper é uma coleção completa de ferramentas para colecionadores e entusiastas retro! 
 
-### ⚡ Power-Ups (Features):
-- 🎯 **Organização Automática** - Renomeia ROMs baseado em arquivos DAT
-- 🔍 **Verificação CRC32** - Garante que seus jogos são legítimos  
-- 📁 **Pastas por Sistema** - Cria subpastas organizadas (Mega Drive, Master System, etc.)
-- 🌍 **Multi-idioma** - Suporte PT-BR e EN
-- 💾 **Executável Único** - Sem dependências, só baixar e usar!
-- ⚙️ **Configurável** - Via linha de comando ou arquivo de config
+### 🛠️ Ferramentas Disponíveis:
+
+#### 🎮 XtraScrapper (ROM Organizer)
+O organizador de ROMs principal que usa arquivos DAT para renomear e organizar seus jogos com precisão de pixel-perfect!
+
+#### 📸 XtraImageScrapper (Image Downloader) **NEW!**
+Baixa imagens de URLs ou sites de forma inteligente e organizada, perfeito para capas, screenshots e arte de jogos!
+
+#### 🧹 XtraRCleaner (ROM Cleaner)
+Limpa e organiza suas coleções de ROMs removendo duplicatas e arquivos problemáticos.
+
+### ⚡ Power-Ups Compartilhados:
+- 🎯 **Interface Unificada** - Mesma experiência em todas as ferramentas
+- 🔍 **Precisão Técnica** - Verificação por CRC32 e checksums  
+- 📁 **Organização Inteligente** - Cria estruturas de pastas organizadas
+- 🌍 **Multi-idioma** - Suporte PT-BR e EN em todas as ferramentas
+- 💾 **Executáveis Únicos** - Sem dependências, só baixar e usar!
+- ⚙️ **Altamente Configurável** - Via linha de comando ou arquivos de config
 
 ---
 
@@ -33,26 +42,31 @@ com precisão de pixel-perfect!
 
 ### 📋 Requisitos do Sistema
 - Windows 64-bit
-- Nenhuma outra coisa! É self-contained! 🎉
+- Nenhuma outra coisa! Todos são self-contained! 🎉
 
 ### 💾 Instalação (Super Easy Mode)
-1. Baixe o `XtraScrapper-v0.0.1-win-x64.zip` da [última release](../../releases)
+1. Baixe os executáveis da [última release](../../releases):
+   - 🎮 `XtraScrapper.exe` - Organizador de ROMs
+   - 📸 `XtraImageScrapper.exe` - Downloader de imagens **NEW!**  
+   - 🧹 `XtraRCleaner.exe` - Limpador de ROMs
 2. Extraia onde quiser
 3. Pronto! Sem instalação, sem stress! 
 
 ### 📂 O que vem no pacote:
 ```
-📦 XtraScrapper-v0.0.1-win-x64/
-├── 🎮 XtraScrapper.exe        (O jefe principal - 65MB)
-├── ⚙️ appsettings.json        (Configurações)
-└── 📖 README.txt              (Instruções básicas)
+📦 XtraScrapper-Suite/
+├── 🎮 XtraScrapper.exe         (Organizador de ROMs - 65MB)
+├── 📸 XtraImageScrapper.exe    (Downloader de imagens - ~45MB) NEW!
+├── 🧹 XtraRCleaner.exe         (Limpador de ROMs - ~40MB)
+├── ⚙️ appsettings.json         (Configurações)
+└── 📖 README.txt               (Instruções básicas)
 ```
 
 ---
 
 ## 🎮 Como Jogar... quer dizer, Usar!
 
-### 🏁 Start Game (Modo Rápido)
+### 🏁 XtraScrapper (ROM Organizer)
 ```bash
 # Usar configurações padrão do appsettings.json
 XtraScrapper.exe
@@ -62,18 +76,53 @@ XtraScrapper.exe --folder "C:\MeusJogos" --dat "mega-drive.dat"
 
 # Organizar em subpastas por sistema
 XtraScrapper.exe --move-sys
-
-# Combo completo!
-XtraScrapper.exe --folder "C:\ROMs" --dat "games.dat" --move-sys
 ```
 
-### 🎛️ Controles (Parâmetros)
+### 📸 XtraImageScrapper (Image Downloader) **NEW!**
+```bash
+# Baixar uma imagem
+XtraImageScrapper.exe --url "https://example.com/image.jpg"
 
+# Baixar lista de imagens de arquivo
+XtraImageScrapper.exe --url "urls.txt" --output "C:\Imagens"
+
+# Downloads simultâneos customizados
+XtraImageScrapper.exe --url "images.txt" --concurrent 10
+```
+
+### 🧹 XtraRCleaner (ROM Cleaner)
+```bash
+# Limpar ROMs duplicados
+XtraRCleaner.exe --input "C:\ROMs" --output "C:\ROMs_Limpos"
+
+# Modo backup (preserva originais)
+XtraRCleaner.exe --backup --input "C:\ROMs"
+```
+
+### 🎛️ Controles (Parâmetros Principais)
+
+#### 🎮 XtraScrapper
 | Botão | Comando | O que faz |
 |-------|---------|-----------|
 | 📁 | `--folder <caminho>` | Define onde estão seus ROMs |
 | 💿 | `--dat <arquivo>` | Especifica o arquivo DAT a usar |
 | 🗂️ | `--move-sys` | Cria subpastas por sistema |
+| ❓ | `--help` ou `-h` | Mostra a tela de ajuda |
+
+#### 📸 XtraImageScrapper **NEW!**
+| Botão | Comando | O que faz |
+|-------|---------|-----------|
+| 🔗 | `--url <url/arquivo>` | URL da imagem ou arquivo com URLs |
+| 📁 | `--output <pasta>` | Pasta de destino das imagens |
+| ⚡ | `--concurrent <n>` | Número de downloads simultâneos |
+| ❓ | `--help` ou `-h` | Mostra a tela de ajuda |
+
+#### 🧹 XtraRCleaner  
+| Botão | Comando | O que faz |
+|-------|---------|-----------|
+| 📂 | `--input <pasta>` | Pasta de ROMs para limpar |
+| 📁 | `--output <pasta>` | Pasta de destino limpa |
+| 💾 | `--backup` | Modo backup (preserva originais) |
 | ❓ | `--help` ou `-h` | Mostra a tela de ajuda |
 
 ### ⚙️ Arquivo de Config (appsettings.json)
@@ -101,29 +150,28 @@ XtraScrapper.exe --folder "C:\Master System" --dat "sms.dat"
 # ✅ random_game.rom → Wonder Boy (World).rom
 ```
 
-### 🗂️ Cenário 2: Organizando com Subpastas
+### 📸 Cenário 2: Baixando Capas de Jogos **NEW!**
 ```bash
-XtraScrapper.exe --folder "C:\ROMs" --dat "mega-drive.dat" --move-sys
+# Baixar capas de uma lista
+XtraImageScrapper.exe --url "capas-megadrive.txt" --output "C:\Capas"
 
-# Antes:
-# C:\ROMs\sonic.bin
-# C:\ROMs\streets_of_rage.rom
-
-# Depois:
-# C:\ROMs\Mega Drive\Sonic The Hedgehog (World).bin
-# C:\ROMs\Mega Drive\Streets of Rage (World).rom
+# Resultado:
+# ✅ Baixado: sonic_cover.jpg  
+# ✅ Baixado: streets_of_rage_cover.png
+# ✅ Baixado: golden_axe_cover.jpg
+# 📊 Total: 45 imagens baixadas em 02:15
 ```
 
-### 🎯 Cenário 3: Modo Automático
+### 🗂️ Cenário 3: Combo Completo
 ```bash
-# Configure uma vez no appsettings.json:
-{
-  "DatFilePath": "meus-jogos.dat",
-  "RomsFolderPath": "C:\\MinhaColecao"
-}
+# 1. Organizar ROMs primeiro
+XtraScrapper.exe --folder "C:\ROMs" --dat "mega-drive.dat" --move-sys
 
-# Depois só execute:
-XtraScrapper.exe
+# 2. Baixar capas organizadas
+XtraImageScrapper.exe --url "covers.txt" --output "C:\ROMs\Mega Drive\Covers"
+
+# 3. Limpar duplicatas  
+XtraRCleaner.exe --input "C:\ROMs" --backup
 ```
 
 ---
@@ -169,20 +217,24 @@ Abra o arquivo pra ver o que rolou com cada ROM! 🕵️
 
 ## 🎯 Pro Tips para Colecionadores
 
-### 🏅 Achievement Unlocked: Organização Perfeita
+### 🏅 Achievement Unlocked: Coleção Perfeita
 1. **Use DATs oficiais** - Baixe de sites como No-Intro ou TOSEC
 2. **Backup primeiro** - Sempre faça backup antes de organizar
-3. **Uma pasta por sistema** - Use `--move-sys` pra organizar melhor  
-4. **Verifique os logs** - Confira se tudo foi renomeado certinho
-5. **Mantenha DATs atualizados** - ROMs novos aparecem sempre!
+3. **Workflow completo** - Organize ROMs → Baixe imagens → Limpe duplicatas
+4. **Verifique os logs** - Confira se tudo foi processado certinho
+5. **Mantenha atualizado** - ROMs e imagens novas aparecem sempre!
 
-### 🎮 Workflow Recomendado
+### 🎮 Workflow Recomendado da Suíte
 ```bash
-# 1. Baixe o DAT oficial do sistema
-# 2. Organize os ROMs
+# 1. Organize seus ROMs primeiro
 XtraScrapper.exe --folder "C:\ROMs\MegaDrive" --dat "mega-drive.dat" --move-sys
 
-# 3. Confira o log gerado
+# 2. Baixe capas e screenshots  
+XtraImageScrapper.exe --url "megadrive-covers.txt" --output "C:\ROMs\MegaDrive\Images"
+
+# 3. Limpe duplicatas e arquivos problemáticos
+XtraRCleaner.exe --input "C:\ROMs\MegaDrive" --backup
+
 # 4. Profit! 🎉
 ```
 
@@ -192,12 +244,19 @@ XtraScrapper.exe --folder "C:\ROMs\MegaDrive" --dat "mega-drive.dat" --move-sys
 
 ### 🌟 v0.0.1 - "First Level Complete!" (Sept 2024)
 - 🚀 Release inicial com funcionalidades core
-- 🎮 Interface de linha de comando  
-- 💿 Suporte a arquivos DAT
+- 🎮 XtraScrapper: Interface de linha de comando para organização de ROMs
+- 💿 Suporte a arquivos DAT e verificação CRC32
 - 📁 Organização em subpastas por sistema
-- 💾 Executável self-contained (65MB)
-- 🌍 Suporte multi-idioma
-- 🔍 Verificação CRC32
+- 💾 Executáveis self-contained (65MB)
+- 🌍 Suporte multi-idioma PT-BR/EN
+
+### 🆕 v0.1.0 - "Power-Up Unlocked!" (Coming Soon)
+- 📸 **XtraImageScrapper**: Novo app para download de imagens!
+- 🧹 **XtraRCleaner**: Limpador avançado de ROMs
+- ⚡ Downloads simultâneos configuráveis
+- 🎯 Validação inteligente de tipos de arquivo
+- 📊 Estatísticas detalhadas de processamento
+- 🔧 Configurações avançadas via appsettings.json
 
 ---
 

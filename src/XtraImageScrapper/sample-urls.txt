@@ -1,0 +1,53 @@
+# XtraImageScrapper - Sample URLs File
+# 
+# This file demonstrates how to create a URL list for XtraImageScrapper
+# Lines starting with # are comments and will be ignored
+# Empty lines are also ignored
+#
+# Usage: XtraImageScrapper.exe --url "sample-urls.txt" --output "downloads"
+
+# === GAME COVER EXAMPLES ===
+# Uncomment (remove #) to use these sample URLs
+
+# Sample placeholder images (safe for testing)
+# https://picsum.photos/800/600?random=1
+# https://picsum.photos/640/480?random=2  
+# https://picsum.photos/1024/768?random=3
+
+# HTTP testing service images
+# https://httpbin.org/image/png
+# https://httpbin.org/image/jpeg
+# https://httpbin.org/image/webp
+
+# === RETRO GAMING ARTWORK EXAMPLES ===
+# Common sources for game artwork (replace with actual URLs)
+
+# Box art example
+# https://example.com/games/sonic/box-art.jpg
+# https://example.com/games/mario/cover.png
+
+# Screenshots example  
+# https://example.com/games/zelda/screenshot1.jpg
+# https://example.com/games/metroid/ingame.png
+
+# Logo examples
+# https://example.com/logos/nintendo.png
+# https://example.com/logos/sega.jpg
+
+# === TIPS FOR CREATING YOUR OWN LIST ===
+#
+# 1. One URL per line
+# 2. Use full URLs starting with http:// or https://
+# 3. Make sure URLs point to actual image files
+# 4. Supported formats: .jpg, .jpeg, .png, .gif, .bmp, .webp
+# 5. Files larger than 10MB will be skipped (configurable)
+# 6. Use comments like this to organize your URLs
+#
+# Example workflow:
+# 1. Create this file with your image URLs
+# 2. Run: XtraImageScrapper.exe --url "my-urls.txt" --output "my-images"
+# 3. Check the logs for any failed downloads
+# 4. Enjoy your organized image collection!
+
+# === YOUR URLS GO BELOW THIS LINE ===
+# Replace the examples above with your actual image URLs

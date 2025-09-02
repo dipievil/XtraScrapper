@@ -30,6 +30,11 @@ msbuild.log
 msbuild.err
 msbuild.wrn
 
+# But include release artifacts in the root
+!XtraScrapper-v*.zip
+!XtraScrapper-v*.zip.sha256
+!RELEASE-NOTES-v*.md
+
 # Visual Studio 2015
 .vs/
 

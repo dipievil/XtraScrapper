@@ -190,8 +190,8 @@ public class RomProcessor : IRomProcessor
                 return ProcessResult.Copied;
                 
             case ProcessMode.Purge:
-                File.Move(sourceFile, destPath);
-                return ProcessResult.Ok;
+                File.Delete(sourceFile);
+                return ProcessResult.Deleted;
                 
             default:
                 return ProcessResult.Error;

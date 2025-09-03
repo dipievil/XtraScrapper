@@ -1,4 +1,5 @@
 using XtraRCleaner.Models;
+using System.Xml.Linq;
 
 namespace XtraRCleaner.Services;
 
@@ -16,6 +17,61 @@ public class DatParser : IDatParser
         if (!File.Exists(filePath))
             return roms;
 
+        var content = await File.ReadAllTextAsync(filePath);
+        
+        // Check if it's XML format
+        if (content.TrimStart().StartsWith("<?xml", StringComparison.OrdinalIgnoreCase))
+        {
+            return await ParseXmlDatAsync(filePath);
+        }
+        
+        // Parse ClrMamePro format
+        return await ParseClrMameProDatAsync(filePath);
+    }
+
+    private async Task<Dictionary<string, RomEntry>> ParseXmlDatAsync(string filePath)
+    {
+        var roms = new Dictionary<string, RomEntry>(StringComparer.OrdinalIgnoreCase);
+        
+        try
+        {
+            var doc = await Task.Run(() => XDocument.Load(filePath));
+            
+            var games = doc.Descendants("game");
+            foreach (var game in games)
+            {
+                var romElement = game.Element("rom");
+                if (romElement != null)
+                {
+                    var crc = romElement.Attribute("crc")?.Value;
+                    var name = romElement.Attribute("name")?.Value ?? game.Attribute("name")?.Value;
+                    var size = romElement.Attribute("size")?.Value;
+                    
+                    if (!string.IsNullOrEmpty(crc))
+                    {
+                        var entry = new RomEntry
+                        {
+                            Name = name ?? "",
+                            Crc = crc.ToUpper(),
+                            Size = size ?? ""
+                        };
+                        
+                        roms[entry.Crc] = entry;
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao parsear XML DAT: {ex.Message}");
+        }
+        
+        return roms;
+    }
+
+    private async Task<Dictionary<string, RomEntry>> ParseClrMameProDatAsync(string filePath)
+    {
+        var roms = new Dictionary<string, RomEntry>(StringComparer.OrdinalIgnoreCase);
         var lines = await File.ReadAllLinesAsync(filePath);
         
         foreach (var line in lines)

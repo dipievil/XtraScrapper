@@ -125,11 +125,37 @@ public class RomProcessor : IRomProcessor
         ProcessMode mode)
     {
         var fileName = Path.GetFileName(sourceFile);
+        string destPath;
         
         // Check if ROM is in DAT
         if (!datRoms.ContainsKey(crc))
         {
-            return ProcessResult.NotInDat;
+            // Move unknown ROMs to 'new' folder
+            destPath = Path.Combine(newPath, fileName);
+            
+            // Avoid overwriting
+            if (File.Exists(destPath))
+            {
+                destPath = GetUniqueFileName(destPath);
+            }
+
+            switch (mode)
+            {
+                case ProcessMode.Move:
+                    File.Move(sourceFile, destPath);
+                    return ProcessResult.NotInDat;
+                    
+                case ProcessMode.Backup:
+                    File.Copy(sourceFile, destPath);
+                    return ProcessResult.NotInDat;
+                    
+                case ProcessMode.Purge:
+                    File.Delete(sourceFile);
+                    return ProcessResult.Deleted;
+                    
+                default:
+                    return ProcessResult.Error;
+            }
         }
 
         // Check if already processed
@@ -145,7 +171,7 @@ public class RomProcessor : IRomProcessor
 
         _processedCrcs.Add(crc);
         
-        var destPath = Path.Combine(checkedPath, fileName);
+        destPath = Path.Combine(checkedPath, fileName);
         
         // Avoid overwriting
         if (File.Exists(destPath))

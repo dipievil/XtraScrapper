@@ -20,7 +20,7 @@ public class DatParser : IDatParser
         var content = await File.ReadAllTextAsync(filePath);
         
         // Check if it's XML format
-        if (content.TrimStart().StartsWith("<?xml"))
+        if (content.TrimStart().StartsWith("<?xml", StringComparison.OrdinalIgnoreCase))
         {
             return await ParseXmlDatAsync(filePath);
         }

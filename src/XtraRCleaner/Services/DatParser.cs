@@ -63,7 +63,7 @@ public class DatParser : IDatParser
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Erro ao parsear XML DAT: {ex.Message}");
+            Console.WriteLine($"Error parsing XML DAT: {ex.Message}");
         }
         
         return roms;

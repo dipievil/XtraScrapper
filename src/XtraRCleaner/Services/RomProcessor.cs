@@ -150,8 +150,8 @@ public class RomProcessor : IRomProcessor
                     return ProcessResult.NotInDat;
                     
                 case ProcessMode.Purge:
-                    File.Move(sourceFile, destPath);
-                    return ProcessResult.NotInDat;
+                    File.Delete(sourceFile);
+                    return ProcessResult.Deleted;
                     
                 default:
                     return ProcessResult.Error;

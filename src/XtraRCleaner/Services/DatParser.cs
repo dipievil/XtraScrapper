@@ -1,4 +1,6 @@
 using XtraRCleaner.Models;
+using System.Resources;
+using Microsoft.Extensions.Logging;
 using System.Xml.Linq;
 
 namespace XtraRCleaner.Services;
@@ -10,6 +12,14 @@ public interface IDatParser
 
 public class DatParser : IDatParser
 {
+    private readonly SimpleLocalizer _localizer;
+    private readonly ILogger<DatParser> _logger;
+
+    public DatParser(ILogger<DatParser> logger)
+    {
+        _localizer = new SimpleLocalizer();
+        _logger = logger;
+    }
     public async Task<Dictionary<string, RomEntry>> ParseDatFileAsync(string filePath)
     {
         var roms = new Dictionary<string, RomEntry>(StringComparer.OrdinalIgnoreCase);
@@ -63,7 +73,7 @@ public class DatParser : IDatParser
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error parsing XML DAT: {ex.Message}");
+            _logger.LogError(ex, _localizer["ErrorParsingXmlDat", ex.Message]);
         }
         
         return roms;

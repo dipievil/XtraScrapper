@@ -26,6 +26,7 @@ XtraRCleaner.exe --output "C:\MinhasRoms" --purge
 
 ## Parâmetros
 
+- `--input <caminho>` - Opcional: Pasta com ROMs originais para verificar (busca recursiva). Default: .\roms
 - `--output <caminho>` - **Obrigatório**: Pasta de destino para os arquivos limpos
 - `--backup` - Opcional: Copia arquivos ao invés de mover
 - `--purge` - Opcional: Deleta arquivos duplicados

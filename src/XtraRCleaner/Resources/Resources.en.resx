@@ -97,4 +97,22 @@
   <data name="InvalidArguments" xml:space="preserve">
     <value>Invalid arguments. Use: XtraRCleaner --input &lt;roms_folder&gt; --output &lt;destination_folder&gt; [--backup] [--purge]</value>
   </data>
+  <data name="FatalError" xml:space="preserve">
+    <value>Fatal error: {0}</value>
+  </data>
+  <data name="InputFolder" xml:space="preserve">
+    <value>Input folder: {0}</value>
+  </data>
+  <data name="OutputFolder" xml:space="preserve">
+    <value>Output folder: {0}</value>
+  </data>
+  <data name="LoadedRomsFromDat" xml:space="preserve">
+    <value>Loaded {0} ROMs from DAT file</value>
+  </data>
+  <data name="FileError" xml:space="preserve">
+    <value>error</value>
+  </data>
+  <data name="ErrorParsingXmlDat" xml:space="preserve">
+    <value>Error parsing XML DAT: {0}</value>
+  </data>
 </root>

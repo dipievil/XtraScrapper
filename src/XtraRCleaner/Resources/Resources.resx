@@ -97,4 +97,22 @@
   <data name="InvalidArguments" xml:space="preserve">
     <value>Argumentos inválidos. Use: XtraRCleaner --input &lt;pasta_roms&gt; --output &lt;pasta_destino&gt; [--backup] [--purge]</value>
   </data>
+  <data name="FatalError" xml:space="preserve">
+    <value>Fatal error: {0}</value>
+  </data>
+  <data name="InputFolder" xml:space="preserve">
+    <value>Pasta de entrada: {0}</value>
+  </data>
+  <data name="OutputFolder" xml:space="preserve">
+    <value>Pasta de saída: {0}</value>
+  </data>
+  <data name="LoadedRomsFromDat" xml:space="preserve">
+    <value>Carregadas {0} ROMs do arquivo DAT</value>
+  </data>
+  <data name="FileError" xml:space="preserve">
+    <value>erro</value>
+  </data>
+  <data name="ErrorParsingXmlDat" xml:space="preserve">
+    <value>Erro ao processar DAT XML: {0}</value>
+  </data>
 </root>

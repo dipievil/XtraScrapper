@@ -4,8 +4,9 @@ using CRCChecker;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
+using System.Globalization;
+using System.Resources;
 
 namespace XtraRCleaner;
 
@@ -13,6 +14,13 @@ public class Program
 {
     private static async Task<int> Main(string[] args)
     {
+        // Set culture for testing - remove this in production or make it configurable
+        if (args.Length > 0 && args[0] == "--en")
+        {
+            CultureInfo.CurrentUICulture = new CultureInfo("en");
+            args = args.Skip(1).ToArray();
+        }
+        
         try
         {
             var host = CreateHostBuilder(args).Build();
@@ -38,7 +46,6 @@ public class Program
             .ConfigureServices((context, services) =>
             {
                 services.Configure<AppSettings>(context.Configuration);
-                services.AddLocalization(options => options.ResourcesPath = "Resources");
                 services.AddSingleton<ICrc32Service, Crc32Service>();
                 services.AddScoped<IDatParser, DatParser>();
                 services.AddScoped<IRomProcessor, RomProcessor>();
@@ -56,66 +63,65 @@ public class XtraRCleanerApp
 {
     private readonly IDatParser _datParser;
     private readonly IRomProcessor _romProcessor;
-    private readonly IStringLocalizer<XtraRCleanerApp> _localizer;
+    private readonly SimpleLocalizer _localizer;
     private readonly ILogger<XtraRCleanerApp> _logger;
     private readonly AppSettings _settings;
 
     public XtraRCleanerApp(
         IDatParser datParser,
         IRomProcessor romProcessor,
-        IStringLocalizer<XtraRCleanerApp> localizer,
         ILogger<XtraRCleanerApp> logger,
         Microsoft.Extensions.Options.IOptions<AppSettings> settings)
     {
         _datParser = datParser;
         _romProcessor = romProcessor;
-        _localizer = localizer;
+        _localizer = new SimpleLocalizer();
         _logger = logger;
         _settings = settings.Value;
     }
 
     public async Task<int> RunAsync(string[] args)
     {
-        Console.WriteLine("XtraRCleaner - Limpador de ROMs");
+        Console.WriteLine(_localizer["AppTitle"]);
         Console.WriteLine();
 
         var (isValid, inputPath, outputPath, mode) = ParseArguments(args);
         
         if (!isValid)
         {
-            Console.WriteLine("Argumentos inválidos. Use: XtraRCleaner --input <pasta_roms> --output <pasta_destino> [--backup] [--purge]");
+            Console.WriteLine(_localizer["InvalidArguments"]);
             return 1;
         }
 
-        _logger.LogInformation("Iniciando processo de limpeza...");
-        Console.WriteLine("Iniciando processo de limpeza...");
-        Console.WriteLine($"Pasta de entrada: {inputPath}");
-        Console.WriteLine($"Pasta de saída: {outputPath}");
+        _logger.LogInformation(_localizer["StartingProcess"]);
+        Console.WriteLine(_localizer["StartingProcess"]);
+        Console.WriteLine(_localizer["InputFolder", inputPath!]);
+        Console.WriteLine(_localizer["OutputFolder", outputPath!]);
         Console.WriteLine();
 
         // Parse DAT file
         var datPath = Path.GetFullPath(_settings.Settings.DatFilePath);
         if (!File.Exists(datPath))
         {
-            var error = $"Arquivo DAT não encontrado: {datPath}";
+            var error = _localizer["DatFileNotFound", datPath];
             Console.WriteLine(error);
             _logger.LogError(error);
             return 1;
         }
 
         var datRoms = await _datParser.ParseDatFileAsync(datPath);
-        _logger.LogInformation("Loaded {Count} ROMs from DAT file", datRoms.Count);
+        _logger.LogInformation(_localizer["LoadedRomsFromDat", datRoms.Count]);
 
         // Process ROMs
         var progress = new Progress<string>(message =>
         {
-            Console.WriteLine($"Processando: {message}");
+            Console.WriteLine(_localizer["ProcessingFile", message]);
         });
 
         var (processed, unique, duplicates) = await _romProcessor.ProcessRomsAsync(
             inputPath!, outputPath!, mode, datRoms, progress);
 
-        var completedMessage = $"Processo concluído! Processados: {processed}, Únicos: {unique}, Duplicados: {duplicates}";
+        var completedMessage = _localizer["ProcessCompleted", processed, unique, duplicates];
         Console.WriteLine();
         Console.WriteLine(completedMessage);
         _logger.LogInformation(completedMessage);
@@ -152,7 +158,6 @@ public class XtraRCleanerApp
     }
 }
 
-// Extension method for file logging
 public static class LoggingExtensions
 {
     public static ILoggingBuilder AddFile(this ILoggingBuilder builder)
@@ -168,7 +173,7 @@ public class FileLoggerProvider : ILoggerProvider
 
     public FileLoggerProvider()
     {
-        _logFilePath = string.Format("CRCChecker_{0:yyyyMMdd_HHmmss}.log", DateTime.Now);
+        _logFilePath = string.Format("XtraRCleaner_{0:yyyyMMdd_HHmmss}.log", DateTime.Now);
     }
 
     public ILogger CreateLogger(string categoryName)

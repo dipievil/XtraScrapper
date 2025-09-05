@@ -1,6 +1,7 @@
 using XtraRCleaner.Models;
 using CRCChecker;
 using Microsoft.Extensions.Logging;
+using System.Resources;
 using System.IO.Compression;
 
 namespace XtraRCleaner.Services;
@@ -19,12 +20,14 @@ public class RomProcessor : IRomProcessor
 {
     private readonly ICrc32Service _crcService;
     private readonly ILogger<RomProcessor> _logger;
+    private readonly SimpleLocalizer _localizer;
     private readonly HashSet<string> _processedCrcs = new();
 
     public RomProcessor(ICrc32Service crcService, ILogger<RomProcessor> logger)
     {
         _crcService = crcService;
         _logger = logger;
+        _localizer = new SimpleLocalizer();
     }
 
     public async Task<(int processed, int unique, int duplicates)> ProcessRomsAsync(
@@ -43,7 +46,7 @@ public class RomProcessor : IRomProcessor
 
         if (!Directory.Exists(inputPath))
         {
-            _logger.LogError("Directory not found: {Path}", inputPath);
+            _logger.LogError(_localizer["DirectoryNotFound", inputPath]);
             return (0, 0, 0);
         }
 
@@ -80,7 +83,7 @@ public class RomProcessor : IRomProcessor
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error processing file: {File}", file);
+                _logger.LogError(ex, _localizer["ErrorProcessingFile", file]);
             }
         }
 
@@ -227,12 +230,12 @@ public class RomProcessor : IRomProcessor
     {
         var status = result switch
         {
-            ProcessResult.Ok => "ok",
-            ProcessResult.AlreadyExists => "já existe",
-            ProcessResult.Copied => "copiado",
-            ProcessResult.Deleted => "deletado",
-            ProcessResult.NotInDat => "não está no DAT",
-            _ => "erro"
+            ProcessResult.Ok => _localizer["FileMoved"],
+            ProcessResult.AlreadyExists => _localizer["FileAlreadyExists"],
+            ProcessResult.Copied => _localizer["FileCopied"],
+            ProcessResult.Deleted => _localizer["FileDeleted"],
+            ProcessResult.NotInDat => _localizer["FileNotInDat"],
+            _ => _localizer["FileError"]
         };
         
         _logger.LogInformation("{FileName} >> {Status}", fileName, status);

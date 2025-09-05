@@ -92,13 +92,32 @@ Crie um arquivo JSON para personalizar onde salvar cada tipo de imagem:
   "boxFolder": "./roms/{SYSTEM}/images/box",
   "printFolder": "./roms/{SYSTEM}/images/screenshots", 
   "mainImagesFolder": "./roms/{SYSTEM}/images/main",
-  "thumbFolder": "./roms/{SYSTEM}/images/thumbs"
+  "thumbFolder": "./roms/{SYSTEM}/images/thumbs",
+  "splashFolder": "./roms/{SYSTEM}/images/splash",
+  "previewFolder": "./roms/{SYSTEM}/images/preview"
 }
 ```
 
-### Usando a configuração:
+### Configuração para MustardOS: mustaros-config.json
+```json
+{
+  "imageFolder": "./MUOS/info/catalogue/{SYSTEM}",
+  "boxFolder": "./MUOS/info/catalogue/{SYSTEM}/box",
+  "printFolder": "./MUOS/info/catalogue/{SYSTEM}/preview",
+  "mainImagesFolder": "./MUOS/info/catalogue/{SYSTEM}/preview",
+  "thumbFolder": "./MUOS/info/catalogue/{SYSTEM}/box",
+  "splashFolder": "./MUOS/info/catalogue/{SYSTEM}/splash",
+  "previewFolder": "./MUOS/info/catalogue/{SYSTEM}/preview"
+}
+```
+
+### Usando as configurações:
 ```bash
-XtraImageScrapper.exe --folderconfig "folder-config.json"
+# Configuração padrão
+XtraImageScrapper.exe --folderconfig "standard-config.json"
+
+# Para MustardOS
+XtraImageScrapper.exe --folderconfig "mustaros-config.json"
 ```
 
 ### Placeholders disponíveis:
@@ -131,12 +150,44 @@ XtraImageScrapper.exe --folderconfig "folder-config.json"
 
 O aplicativo baixa automaticamente os seguintes tipos de mídia do ScreenScraper:
 
-| Tipo ScreenScraper | Descrição | Pasta Padrão |
-|---|---|---|
-| `box-2D` | Imagem da caixa/box | `{SYSTEM}/images` |
-| `ss` | Screenshot do jogo | `{SYSTEM}/images` |
-| `titre` | Imagem principal/título | `{SYSTEM}/images` |
-| `wheel` | Logo/wheel | `{SYSTEM}/images` |
+| Tipo ScreenScraper | Descrição | Pasta Padrão | Pasta MustardOS |
+|---|---|---|---|
+| `box-2D` | Imagem da caixa/box | `{SYSTEM}/images/box` | `{SYSTEM}/box` |
+| `ss` | Screenshot do jogo | `{SYSTEM}/images/screenshots` | `{SYSTEM}/preview` |
+| `titre` | Imagem principal/título | `{SYSTEM}/images/main` | `{SYSTEM}/preview` |
+| `wheel` | Logo/wheel | `{SYSTEM}/images/thumbs` | `{SYSTEM}/box` |
+| `fanart` | Fanart/splash | `{SYSTEM}/images/splash` | `{SYSTEM}/splash` |
+| `screenmarquee` | Screen marquee | `{SYSTEM}/images/preview` | `{SYSTEM}/preview` |
+
+## Suporte ao MustardOS
+
+O XtraImageScrapper agora possui suporte completo ao sistema de organização do **MustardOS**!
+
+### Estrutura do MustardOS
+O MustardOS organiza as imagens na seguinte estrutura:
+```
+MUOS/
+└── info/
+    └── catalogue/
+        └── <System>/
+            ├── box/          # Box art
+            ├── preview/      # Screenshots/preview
+            ├── splash/       # Splash screens  
+            └── text/         # Descriptions (não suportado)
+```
+
+### Como usar
+1. Use o arquivo `mustaros-config.json` incluído
+2. Execute o comando:
+```bash
+XtraImageScrapper.exe --folderconfig "mustaros-config.json"
+```
+
+### Compatibilidade
+- ✅ Nomes de arquivo automáticos (mesmo nome do ROM)
+- ✅ Estrutura de pastas compatível
+- ✅ Tipos de imagem mapeados corretamente
+- ✅ Placeholder {SYSTEM} funciona perfeitamente
 
 ## Sistemas Suportados
 

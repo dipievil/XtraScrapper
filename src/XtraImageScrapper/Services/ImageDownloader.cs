@@ -54,7 +54,9 @@ public class ImageDownloader : IImageDownloader
             ["box-2D"] = GetFolderPath(folderConfig.BoxFolder, romFile.System),
             ["ss"] = GetFolderPath(folderConfig.PrintFolder, romFile.System),
             ["titre"] = GetFolderPath(folderConfig.MainImagesFolder, romFile.System),
-            ["wheel"] = GetFolderPath(folderConfig.ThumbFolder, romFile.System)
+            ["wheel"] = GetFolderPath(folderConfig.ThumbFolder, romFile.System),
+            ["fanart"] = GetFolderPath(folderConfig.SplashFolder, romFile.System),
+            ["screenmarquee"] = GetFolderPath(folderConfig.PreviewFolder, romFile.System)
         };
 
         foreach (var media in gameInfo.Response.Jeu.Medias)
@@ -84,7 +86,8 @@ public class ImageDownloader : IImageDownloader
 
             // Generate filename
             var extension = GetImageExtension(media.Format ?? "png");
-            var filename = $"{SanitizeFilename(romFile.FileName)}_{imageType}.{extension}";
+            var romNameWithoutExtension = Path.GetFileNameWithoutExtension(romFile.FileName);
+            var filename = $"{SanitizeFilename(romNameWithoutExtension)}.{extension}";
             var localPath = Path.Combine(targetFolder, filename);
 
             // Skip if file already exists locally

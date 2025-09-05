@@ -25,6 +25,8 @@ public class CommandLineArgs
     public string? BoxFolder { get; set; }
     public string? PrintFolder { get; set; }
     public string? ThumbFolder { get; set; }
+    public string? SplashFolder { get; set; }
+    public string? PreviewFolder { get; set; }
     public string? FolderConfig { get; set; }
     public string? User { get; set; }
     public string? Password { get; set; }
@@ -39,6 +41,8 @@ public class FolderConfig
     public string PrintFolder { get; set; } = "./roms/{SYSTEM}/images";
     public string MainImagesFolder { get; set; } = "./roms/{SYSTEM}/images";
     public string ThumbFolder { get; set; } = "./roms/{SYSTEM}/images";
+    public string SplashFolder { get; set; } = "./roms/{SYSTEM}/images";
+    public string PreviewFolder { get; set; } = "./roms/{SYSTEM}/images";
 }
 
 public class RomFile

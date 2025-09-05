@@ -1,0 +1,9 @@
+{
+  "imageFolder": "./MUOS/info/catalogue/{SYSTEM}",
+  "boxFolder": "./MUOS/info/catalogue/{SYSTEM}/box",
+  "printFolder": "./MUOS/info/catalogue/{SYSTEM}/preview",
+  "mainImagesFolder": "./MUOS/info/catalogue/{SYSTEM}/preview",
+  "thumbFolder": "./MUOS/info/catalogue/{SYSTEM}/box",
+  "splashFolder": "./MUOS/info/catalogue/{SYSTEM}/splash",
+  "previewFolder": "./MUOS/info/catalogue/{SYSTEM}/preview"
+}

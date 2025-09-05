@@ -1,0 +1,9 @@
+{
+  "imageFolder": "./roms/{SYSTEM}/images",
+  "boxFolder": "./roms/{SYSTEM}/images/box",
+  "printFolder": "./roms/{SYSTEM}/images/screenshots",
+  "mainImagesFolder": "./roms/{SYSTEM}/images/main",
+  "thumbFolder": "./roms/{SYSTEM}/images/thumbs",
+  "splashFolder": "./roms/{SYSTEM}/images/splash",
+  "previewFolder": "./roms/{SYSTEM}/images/preview"
+}

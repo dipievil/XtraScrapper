@@ -175,6 +175,12 @@ public class XtraImageScrapperApp
                 case "--thumbfolder" when i + 1 < args.Length:
                     cmdArgs.ThumbFolder = args[++i];
                     break;
+                case "--splashfolder" when i + 1 < args.Length:
+                    cmdArgs.SplashFolder = args[++i];
+                    break;
+                case "--previewfolder" when i + 1 < args.Length:
+                    cmdArgs.PreviewFolder = args[++i];
+                    break;
                 case "--folderconfig" when i + 1 < args.Length:
                     cmdArgs.FolderConfig = args[++i];
                     break;
@@ -234,6 +240,10 @@ public class XtraImageScrapperApp
             folderConfig.PrintFolder = cmdArgs.PrintFolder;
         if (!string.IsNullOrEmpty(cmdArgs.ThumbFolder))
             folderConfig.ThumbFolder = cmdArgs.ThumbFolder;
+        if (!string.IsNullOrEmpty(cmdArgs.SplashFolder))
+            folderConfig.SplashFolder = cmdArgs.SplashFolder;
+        if (!string.IsNullOrEmpty(cmdArgs.PreviewFolder))
+            folderConfig.PreviewFolder = cmdArgs.PreviewFolder;
 
         return folderConfig;
     }
@@ -251,6 +261,8 @@ public class XtraImageScrapperApp
         Console.WriteLine("  --boxfolder <path>     Folder for box images");
         Console.WriteLine("  --printfolder <path>   Folder for screenshot images");
         Console.WriteLine("  --thumbfolder <path>   Folder for thumbnail images");
+        Console.WriteLine("  --splashfolder <path>  Folder for splash images");
+        Console.WriteLine("  --previewfolder <path> Folder for preview images");
         Console.WriteLine("");
         Console.WriteLine("  --folderconfig <path>  JSON file with folder configuration");
         Console.WriteLine("                         Overrides individual folder parameters");
@@ -263,7 +275,7 @@ public class XtraImageScrapperApp
         Console.WriteLine("");
         Console.WriteLine("Examples:");
         Console.WriteLine("  XtraImageScrapper.exe --folder \"C:\\ROMs\"");
-        Console.WriteLine("  XtraImageScrapper.exe --folderconfig \"custom-folders.json\"");
+        Console.WriteLine("  XtraImageScrapper.exe --folderconfig \"mustaros-config.json\"");
         Console.WriteLine("  XtraImageScrapper.exe --user \"myuser\" --password \"mypass\"");
     }
 }

@@ -13,7 +13,7 @@
     },
     "printFolder": {
       "type": "string",
-      "description": "The subfolder for print image. Ex: ./roms/{SYSTEM}/images/print",
+      "description": "The subfolder for print/screenshot images. Ex: ./roms/{SYSTEM}/images/print",
       "default": "./roms/{SYSTEM}/images"
     },
     "mainImagesFolder": {
@@ -24,6 +24,16 @@
     "thumbFolder": {
       "type": "string",
       "description": "The subfolder for thumbnails. Ex: ./roms/{SYSTEM}/images/thumb",
+      "default": "./roms/{SYSTEM}/images"
+    },
+    "splashFolder": {
+      "type": "string",
+      "description": "The subfolder for splash images. Ex: ./roms/{SYSTEM}/images/splash",
+      "default": "./roms/{SYSTEM}/images"
+    },
+    "previewFolder": {
+      "type": "string",
+      "description": "The subfolder for preview images. Ex: ./roms/{SYSTEM}/images/preview",
       "default": "./roms/{SYSTEM}/images"
     }
   },

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="StartingMessage" xml:space="preserve">
+    <value>🎮 XtraMetaScrapper starting...</value>
+  </data>
+  <data name="ScanningFolder" xml:space="preserve">
+    <value>📂 Scanning folder: {0}</value>
+  </data>
+  <data name="FoundRoms" xml:space="preserve">
+    <value>🎯 Found {0} ROMs to process</value>
+  </data>
+  <data name="ProcessingRom" xml:space="preserve">
+    <value>🔍 Extracting metadata: {0}</value>
+  </data>
+  <data name="ExtractionFailed" xml:space="preserve">
+    <value>❌ Extraction failed: {0}</value>
+  </data>
+  <data name="ProcessingComplete" xml:space="preserve">
+    <value>✅ Processing complete! {0} metadata extracted</value>
+  </data>
+  <data name="ErrorInvalidFolder" xml:space="preserve">
+    <value>❌ ROMs folder not found: {0}</value>
+  </data>
+    <data name="ErrorInvalidFolderCreatePrompt" xml:space="preserve">
+      <value>Specify the ROMs folder using --folder "C:\\ROMs" or set `RomsFolder` in appsettings.json; or create the folder manually.</value>
+    </data>
+</root>

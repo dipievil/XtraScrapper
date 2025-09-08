@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "properties": {
+    "outputFolder": {
+      "type": "string",
+      "description": "The main folder for metadata output",
+      "default": "./metadata/{SYSTEM}"
+    },
+    "jsonFolder": {
+      "type": "string",
+      "description": "The subfolder for JSON metadata. Ex: ./metadata/{SYSTEM}/json",
+      "default": "./metadata/{SYSTEM}/json"
+    },
+    "xmlFolder": {
+      "type": "string",
+      "description": "The subfolder for XML metadata. Ex: ./metadata/{SYSTEM}/xml",
+      "default": "./metadata/{SYSTEM}/xml"
+    },
+    "csvFolder": {
+      "type": "string",
+      "description": "The subfolder for CSV metadata. Ex: ./metadata/{SYSTEM}/csv",
+      "default": "./metadata/{SYSTEM}/csv"
+    },
+    "exportJson": {
+      "type": "boolean",
+      "description": "Export metadata to JSON format",
+      "default": true
+    },
+    "exportXml": {
+      "type": "boolean",
+      "description": "Export metadata to XML format",
+      "default": false
+    },
+    "exportCsv": {
+      "type": "boolean",
+      "description": "Export metadata to CSV format",
+      "default": false
+    }
+  },
+  "required": [
+    "outputFolder"
+  ]
+}

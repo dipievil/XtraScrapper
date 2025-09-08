@@ -1,0 +1,9 @@
+{
+  "outputFolder": "./metadata/{SYSTEM}",
+  "jsonFolder": "./metadata/{SYSTEM}/json",
+  "xmlFolder": "./metadata/{SYSTEM}/xml",
+  "csvFolder": "./metadata/{SYSTEM}/csv",
+  "exportJson": true,
+  "exportXml": false,
+  "exportCsv": false
+}

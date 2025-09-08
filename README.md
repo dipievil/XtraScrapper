@@ -28,11 +28,19 @@ A XtraScrapper Suite inclui várias ferramentas especializadas:
 - 🔍 **Verificação CRC32** - Garante que seus jogos são legítimos  
 - 📁 **Pastas por Sistema** - Cria subpastas organizadas
 
-### 🖼️ XtraImageScrapper (Novo!)
+### 🖼️ XtraImageScrapper 
 - 🌐 **Download Automático** - Baixa imagens do ScreenScraper.fr
-- 📷 **Múltiplos Tipos** - Box, screenshots, thumbnails, etc.
+- 📷 **Múltiplos Tipos** - Box, screenshots, thumbnails, splash
 - 💾 **Cache Inteligente** - SQLite para evitar re-downloads
 - ⚙️ **Configuração Flexível** - Estrutura de pastas personalizável
+- 🎯 **Suporte MustardOS** - Estrutura compatível com handhelds retro
+
+### 📊 XtraMetaScrapper (Novo!)
+- 🔍 **Extração Completa** - Todos os metadados do ScreenScraper.fr
+- 📄 **Múltiplos Formatos** - JSON, XML, CSV
+- 🏷️ **Dados Ricos** - Nome, descrição, publisher, developer, gênero, etc.
+- 💾 **Cache SQLite** - Evita re-scraping desnecessário
+- ⚙️ **Configuração Flexível** - Estrutura de saída personalizável
 
 ### 🧹 XtraRCleaner (Limpador)
 - 🗑️ **Remove Duplicatas** - Baseado em CRC32
@@ -202,6 +210,12 @@ XtraScrapper.exe --folder "C:\ROMs\MegaDrive" --dat "mega-drive.dat" --move-sys
 # 3. Baixe as imagens dos jogos
 XtraImageScrapper.exe --folder "C:\ROMs\MegaDrive" --user "meuuser" --password "minhasenha"
 
+# Para MustardOS (handhelds retro)
+XtraImageScrapper.exe --folderconfig "mustaros-config.json" --folder "C:\ROMs\GameBoy"
+
+# 4. Extraia os metadados dos jogos
+XtraMetaScrapper.exe --folder "C:\ROMs\MegaDrive" --user "meuuser" --password "minhasenha"
+
 # 4. Confira os logs gerados
 # 5. Profit! 🎉
 ```
@@ -210,11 +224,27 @@ XtraImageScrapper.exe --folder "C:\ROMs\MegaDrive" --user "meuuser" --password "
 
 - 📖 [XtraScrapper (Organizador)](docs/XtraScrapper.md)
 - 🖼️ [XtraImageScrapper (Download de Imagens)](docs/XtraImageScrapper.md)  
+- 📊 [XtraMetaScrapper (Extração de Metadados)](docs/XtraMetaScrapper.md)
+- 🎯 [Suporte ao MustardOS](docs/MustardOS-Support.md)
 - 🧹 [XtraRCleaner (Limpador)](docs/XtraRCleaner.md)
 
 ---
 
 ## 🏆 High Score (Changelog)
+
+### 🆕 v0.2.0 - "Metadata Power-Up!" (Set 2025)
+- 📊 **XtraMetaScrapper**: Novo app para extração de metadados completos
+- 🔍 Extração de nome, descrição, publisher, developer, gênero, etc.
+- 📄 Múltiplos formatos de saída: JSON, XML, CSV
+- 💾 Cache SQLite para evitar re-scraping
+- ⚙️ Configuração flexível de estrutura de saída
+
+### 🆕 v0.1.1 - "MustardOS Power-Up!" (Set 2025)
+- 🎯 **Suporte ao MustardOS**: Configuração automática para handhelds retro
+- 📁 Novos tipos de pasta: splash e preview
+- 🔧 Novos parâmetros: --splashfolder e --previewfolder
+- 📄 Configuração pré-definida: mustaros-config.json
+- 📖 Documentação completa do MustardOS
 
 ### 🆕 v0.1.0 - "Image Power-Up!" (Jan 2025)
 - 🖼️ **XtraImageScrapper**: Novo app para download de imagens

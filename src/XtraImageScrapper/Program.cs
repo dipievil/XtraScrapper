@@ -68,7 +68,7 @@ public class XtraImageScrapperApp
     private readonly IRomScanner _romScanner;
     private readonly IImageDownloader _imageDownloader;
     private readonly IDatabaseService _databaseService;
-    private readonly IStringLocalizer<XtraImageScrapperApp> _localizer;
+    private readonly IStringLocalizer _localizer;
     private readonly ILogger<XtraImageScrapperApp> _logger;
     private readonly Settings _settings;
 
@@ -76,14 +76,16 @@ public class XtraImageScrapperApp
         IRomScanner romScanner,
         IImageDownloader imageDownloader,
         IDatabaseService databaseService,
-        IStringLocalizer<XtraImageScrapperApp> localizer,
+        IStringLocalizerFactory localizerFactory,
         ILogger<XtraImageScrapperApp> logger,
         Settings settings)
     {
         _romScanner = romScanner;
         _imageDownloader = imageDownloader;
         _databaseService = databaseService;
-        _localizer = localizer;
+        // Create a shared resource localizer from Resources/Resources.resx
+        var assemblyName = typeof(Program).Assembly.GetName().Name ?? string.Empty;
+        _localizer = localizerFactory.Create("Resources", assemblyName);
         _logger = logger;
         _settings = settings;
     }
@@ -115,6 +117,31 @@ public class XtraImageScrapperApp
 
             // Load folder configuration
             var folderConfig = await LoadFolderConfigAsync(cmdArgs);
+
+            // Show summary of settings before proceeding (without counting files to avoid delay)
+            Console.WriteLine();
+            Console.WriteLine("## Configurações do processamento");
+            Console.WriteLine($"- Pasta de Roms: {romsFolder}");
+            Console.WriteLine($"- Arquivo de dados: {_settings.DatabasePath}");
+            Console.WriteLine($"- Arquivo de log: {_settings.LogFilePath}");
+            Console.WriteLine("- Outras configurações:");
+            Console.WriteLine($"  - MaxRequestsPerSecond: {_settings.MaxRequestsPerSecond}");
+            Console.WriteLine($"  - TimeoutSeconds: {_settings.TimeoutSeconds}");
+            Console.WriteLine();
+            Console.WriteLine("Outras informações: imagens serão baixadas/atualizadas conforme as regras do folder-config.");
+
+            // If user didn't pass --y, ask for confirmation
+            var autoYes = cmdArgs.User == "__auto_yes__";
+            if (!autoYes)
+            {
+                Console.Write("Continuar? (Y/n): ");
+                var answer = Console.ReadLine();
+                if (!string.IsNullOrEmpty(answer) && answer.Trim().ToLowerInvariant() == "n")
+                {
+                    Console.WriteLine("Operação cancelada pelo usuário.");
+                    return 0;
+                }
+            }
 
             // Scan ROMs
             Console.WriteLine(_localizer["ScanningFolder", romsFolder]);
@@ -197,6 +224,11 @@ public class XtraImageScrapperApp
                 case "-h":
                 case "/?":
                     cmdArgs.ShowHelp = true;
+                    break;
+                case "--y":
+                    // auto-yes flag to skip prompts
+                    // stored in User property as a simple hack (avoid broad model change)
+                    cmdArgs.User = "__auto_yes__";
                     break;
             }
         }

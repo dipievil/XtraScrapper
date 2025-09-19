@@ -95,24 +95,35 @@
     <value>Directory not found: {0}</value>
   </data>
   <data name="InvalidArguments" xml:space="preserve">
-    <value>Invalid arguments. Use: XtraRCleaner --input &lt;roms_folder&gt; --output &lt;destination_folder&gt; [--backup] [--purge]</value>
+    <value>Invalid arguments. Use: XtraRCleaner --input &lt;roms_folder&gt; --output &lt;output_folder&gt; --dat &lt;dat_file&gt; [--backup] [--purge]</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Usage: XtraRCleaner --input &lt;source_folder&gt; --output &lt;dest_folder&gt; --dat &lt;dat_file&gt; [--backup] [--purge]
+  --input    Folder containing ROMs to process
+  --output   Folder to organize valid ROMs
+  --dat      DAT file with known CRCs (REQUIRED)
+  --backup   Backup mode (copy instead of move)
+  --purge    Remove duplicates (only deletes after moving to 'checked')</value>
+  </data>
+  <data name="DatFile" xml:space="preserve">
+    <value>DAT file: {0}</value>
   </data>
   <data name="FatalError" xml:space="preserve">
     <value>Fatal error: {0}</value>
   </data>
   <data name="InputFolder" xml:space="preserve">
-    <value>Input folder: {0}</value>
+    <value>Pasta de entrada: {0}</value>
   </data>
   <data name="OutputFolder" xml:space="preserve">
-    <value>Output folder: {0}</value>
+    <value>Pasta de saída: {0}</value>
   </data>
   <data name="LoadedRomsFromDat" xml:space="preserve">
-    <value>Loaded {0} ROMs from DAT file</value>
+    <value>Carregadas {0} ROMs do arquivo DAT</value>
   </data>
   <data name="FileError" xml:space="preserve">
-    <value>error</value>
+    <value>erro</value>
   </data>
   <data name="ErrorParsingXmlDat" xml:space="preserve">
-    <value>Error parsing XML DAT: {0}</value>
+    <value>Erro ao processar DAT XML: {0}</value>
   </data>
 </root>

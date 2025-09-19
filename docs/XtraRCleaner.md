@@ -2,34 +2,52 @@
 
 Aplicativo console que verifica ROMs duplicadas baseado em um arquivo DAT e cria um conjunto limpo.
 
+## ⚠️ Mudanças Importantes na v0.2.1
+
+1. **Arquivo DAT obrigatório**: Agora deve ser especificado via `--dat`
+2. **Purge seguro**: Nunca deleta ROMs não encontrados no DAT
+3. **Extensão .nes**: Suporte adicionado para arquivos NES
+
 ## Funcionalidades
 
 - ✅ Verifica conteúdo das pastas e move arquivos únicos baseado em CRC32
 - ✅ Suporte a arquivos ZIP e ROMs descompactadas  
-- ✅ Modo backup (apenas copia) e purge (deleta duplicatas)
+- ✅ Modo backup (apenas copia) e purge (deleta duplicatas SEGURO)
 - ✅ Multi-idioma (PT-BR/EN)
 - ✅ Log detalhado das operações
 - ✅ Executável único (.exe)
+- ✅ Extensões suportadas: `.rom`, `.sms`, `.gg`, `.zip`, `.bin`, `.nes`
 
 ## Uso
 
 ```bash
-# Modo padrão (move arquivos únicos)
-XtraRCleaner.exe --output "C:\MinhasRoms"
+# ⚠️  ARQUIVO DAT É OBRIGATÓRIO!
+XtraRCleaner.exe --input "C:\ROMs\NES" --output "C:\ROMs\Organized" --dat "nes.dat"
 
-# Modo backup (apenas copia)
-XtraRCleaner.exe --output "C:\MinhasRoms" --backup
+# Modo backup (copia ao invés de mover)
+XtraRCleaner.exe --input "C:\ROMs\NES" --output "C:\ROMs\Valid" --dat "nes.dat" --backup
 
-# Modo limpeza (deleta duplicados)
-XtraRCleaner.exe --output "C:\MinhasRoms" --purge
+# Modo purge (remove duplicatas APÓS organizar)
+XtraRCleaner.exe --input "C:\ROMs\NES" --output "C:\ROMs\Clean" --dat "nes.dat" --purge
 ```
 
 ## Parâmetros
 
-- `--input <caminho>` - Opcional: Pasta com ROMs originais para verificar (busca recursiva). Default: .\roms
-- `--output <caminho>` - **Obrigatório**: Pasta de destino para os arquivos limpos
-- `--backup` - Opcional: Copia arquivos ao invés de mover
-- `--purge` - Opcional: Deleta arquivos duplicados
+| Parâmetro | Obrigatório | Descrição |
+|-----------|-------------|-----------|
+| `--input` | ✅ | Pasta contendo ROMs para processar |
+| `--output` | ✅ | Pasta onde organizar ROMs válidos |
+| `--dat` | ✅ | **OBRIGATÓRIO** - Arquivo DAT com CRCs conhecidos |
+| `--backup` | ❌ | Modo backup (copia ao invés de mover) |
+| `--purge` | ❌ | Remove duplicatas (seguro - só após organizar) |
+
+## 🛡️ Segurança do Modo Purge
+
+O modo `--purge` agora é **100% seguro**:
+- ✅ ROMs **válidos** (no DAT): Movidos para pasta `checked`
+- ✅ ROMs **duplicados**: Deletados apenas APÓS mover o primeiro
+- ✅ ROMs **desconhecidos**: Movidos para pasta `new` (nunca deletados)
+- ❌ **NUNCA** deleta ROMs não encontrados no DAT
 
 ## Estrutura de Pastas
 

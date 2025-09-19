@@ -85,11 +85,12 @@ public class XtraRCleanerApp
         Console.WriteLine(_localizer["AppTitle"]);
         Console.WriteLine();
 
-        var (isValid, inputPath, outputPath, mode) = ParseArguments(args);
+        var (isValid, inputPath, outputPath, datPath, mode) = ParseArguments(args);
         
         if (!isValid)
         {
             Console.WriteLine(_localizer["InvalidArguments"]);
+            Console.WriteLine(_localizer["Usage"]);
             return 1;
         }
 
@@ -97,19 +98,20 @@ public class XtraRCleanerApp
         Console.WriteLine(_localizer["StartingProcess"]);
         Console.WriteLine(_localizer["InputFolder", inputPath!]);
         Console.WriteLine(_localizer["OutputFolder", outputPath!]);
+        Console.WriteLine(_localizer["DatFile", datPath!]);
         Console.WriteLine();
 
         // Parse DAT file
-        var datPath = Path.GetFullPath(_settings.Settings.DatFilePath);
-        if (!File.Exists(datPath))
+        var datFilePath = Path.GetFullPath(datPath!);
+        if (!File.Exists(datFilePath))
         {
-            var error = _localizer["DatFileNotFound", datPath];
+            var error = _localizer["DatFileNotFound", datFilePath];
             Console.WriteLine(error);
             _logger.LogError(error);
             return 1;
         }
 
-        var datRoms = await _datParser.ParseDatFileAsync(datPath);
+        var datRoms = await _datParser.ParseDatFileAsync(datFilePath);
         _logger.LogInformation(_localizer["LoadedRomsFromDat", datRoms.Count]);
 
         // Process ROMs
@@ -129,10 +131,11 @@ public class XtraRCleanerApp
         return 0;
     }
 
-    private (bool isValid, string? inputPath, string? outputPath, ProcessMode mode) ParseArguments(string[] args)
+    private (bool isValid, string? inputPath, string? outputPath, string? datPath, ProcessMode mode) ParseArguments(string[] args)
     {
         string? inputPath = null;
         string? outputPath = null;
+        string? datPath = null;
         var mode = ProcessMode.Move;
 
         for (int i = 0; i < args.Length; i++)
@@ -145,6 +148,9 @@ public class XtraRCleanerApp
                 case "--output" when i + 1 < args.Length:
                     outputPath = args[++i];
                     break;
+                case "--dat" when i + 1 < args.Length:
+                    datPath = args[++i];
+                    break;
                 case "--backup":
                     mode = ProcessMode.Backup;
                     break;
@@ -154,7 +160,7 @@ public class XtraRCleanerApp
             }
         }
 
-        return (inputPath != null && outputPath != null, inputPath, outputPath, mode);
+        return (inputPath != null && outputPath != null && datPath != null, inputPath, outputPath, datPath, mode);
     }
 }
 

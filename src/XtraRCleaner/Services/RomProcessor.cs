@@ -153,8 +153,11 @@ public class RomProcessor : IRomProcessor
                     return ProcessResult.NotInDat;
                     
                 case ProcessMode.Purge:
-                    File.Delete(sourceFile);
-                    return ProcessResult.Deleted;
+                    // CRITICAL FIX: Never delete ROMs not found in DAT!
+                    // These could be new/unknown games that should be preserved
+                    // Instead, move them to 'new' folder for manual review
+                    File.Move(sourceFile, destPath);
+                    return ProcessResult.NotInDat;
                     
                 default:
                     return ProcessResult.Error;
@@ -223,7 +226,7 @@ public class RomProcessor : IRomProcessor
     private bool IsRomFile(string fileName)
     {
         var ext = Path.GetExtension(fileName).ToLower();
-        return ext is ".rom" or ".sms" or ".gg" or ".zip" or ".bin";
+        return ext is ".rom" or ".sms" or ".gg" or ".zip" or ".bin" or ".nes";
     }
 
     private void LogResult(string fileName, ProcessResult result)

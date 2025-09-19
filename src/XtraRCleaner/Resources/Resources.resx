@@ -95,7 +95,18 @@
     <value>Diretório não encontrado: {0}</value>
   </data>
   <data name="InvalidArguments" xml:space="preserve">
-    <value>Argumentos inválidos. Use: XtraRCleaner --input &lt;pasta_roms&gt; --output &lt;pasta_destino&gt; [--backup] [--purge]</value>
+    <value>Argumentos inválidos. Use: XtraRCleaner --input &lt;pasta_roms&gt; --output &lt;pasta_destino&gt; --dat &lt;arquivo_dat&gt; [--backup] [--purge]</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Uso: XtraRCleaner --input &lt;pasta_origem&gt; --output &lt;pasta_destino&gt; --dat &lt;arquivo_dat&gt; [--backup] [--purge]
+  --input    Pasta contendo os ROMs a processar
+  --output   Pasta onde organizar os ROMs válidos
+  --dat      Arquivo DAT com CRCs conhecidos (OBRIGATÓRIO)
+  --backup   Modo backup (copia ao invés de mover)
+  --purge    Remove duplicatas (só deleta após mover para 'checked')</value>
+  </data>
+  <data name="DatFile" xml:space="preserve">
+    <value>Arquivo DAT: {0}</value>
   </data>
   <data name="FatalError" xml:space="preserve">
     <value>Fatal error: {0}</value>
